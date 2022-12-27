@@ -5,10 +5,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 app.use(cookieParser());
-app.use(cors({
-    credentials: true,
-    origin: true
-}));
+app.use(cors());
 appService.connectToDB();
 appService.setAPIMiddleware(app);
 appService.apiSetUp(app);

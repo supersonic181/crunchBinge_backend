@@ -1,14 +1,14 @@
 const api = require("./api");
 const bodyParser = require("body-parser");
-// const db = require("./db");
+const db = require("./db");
 
 
 // To connect to the database
-// const connectToDB = () => {
-//     db.createMongoConnection();
-//     // console.log(db.getMongoConnection());
-//     console.log("Connection Established");
-// }
+const connectToDB = () => {
+    db.createMongoConnection();
+    // console.log(db.getMongoConnection());
+    console.log("Connection Established");
+}
 
 // Setting up a middleware for app
 const setAPIMiddleware = (app) => {
@@ -22,6 +22,7 @@ const apiSetUp = (app) => {
 
 // exporting the modules
 module.exports = {
+    connectToDB,
     setAPIMiddleware,
     apiSetUp
 }

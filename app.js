@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 
 app.use(cors());
 app.use(cookieParser());
-// appService.connectToDB();
+appService.connectToDB();
 appService.setAPIMiddleware(app);
 appService.apiSetUp(app);
 

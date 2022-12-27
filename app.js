@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(cors({
     credentials: true,
-    origin: "*"
+    origin: process.env.cors
 }));
 appService.connectToDB();
 appService.setAPIMiddleware(app);

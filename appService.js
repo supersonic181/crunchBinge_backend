@@ -1,7 +1,7 @@
 const api = require("./api");
 const bodyParser = require("body-parser");
 const db = require("./db");
-const cors = require("cors");
+
 
 // To connect to the database
 const connectToDB = () => {
@@ -34,7 +34,7 @@ const corsOpts = {
     credentials: true
   };
 
-app.use(cors(corsOpts));
+
 
 const apiSetUp = (app) => {
     app.use('/api', api);

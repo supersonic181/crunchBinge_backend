@@ -54,6 +54,7 @@ const userLogin = async (req, res) => {
     console.log("Login block reached");
     try {
         const { email, password } = req.body;
+        console.log(email, password)
         if (email && password) {
             const user = await userModel.findOne({ email: email });
             if (user != null) {

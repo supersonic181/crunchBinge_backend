@@ -4,9 +4,7 @@ const app = express();
 const appService = require("./appService");
 const cookieParser = require("cookie-parser");
 
-app.use(cors({
-    credentials: true
-}));
+app.use(cors());
 app.use(cookieParser());
 appService.connectToDB();
 appService.setAPIMiddleware(app);

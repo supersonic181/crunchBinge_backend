@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const corsOptions = {
     origin: true, //included origin as true
     credentials: true, //included credentials as true
+    exposedHeaders: ["set-cookie"],
 };
 
 app.use(cors(corsOptions));

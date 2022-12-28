@@ -1,10 +1,10 @@
-const cors = require("cors");
+// const cors = require("cors");
 const express = require("express");
 const app = express();
 const appService = require("./appService");
 const cookieParser = require("cookie-parser");
 
-app.use(cors());
+// app.use(cors());
 app.use(cookieParser());
 appService.connectToDB();
 appService.setAPIMiddleware(app);

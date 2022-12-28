@@ -63,8 +63,8 @@ const userLogin = async (req, res) => {
                     // Generate JWT Token
                     const token = jwt.sign({ userID: user._id }, jwt_secret_key, { expiresIn: "10d" });
                     res.cookie("jwt", token, {
-                        httpOnly: true,
-                        secure: true,
+                        httpOnly: false,
+                        secure: false,
                         maxAge: 24 * 60 * 60 * 1000
                     });
                     const { password, ...info } = user._doc;
@@ -184,9 +184,9 @@ const getUsers = async (req, res) => {
     } catch (error) {
         // console.log("erro here");
         console.log(error);
-        // return res.status(401).send({
-        //     message: "Unauthenticated"
-        // })
+        return res.status(401).send({
+            message: "Unauthenticated"
+        })
     }
 }
 

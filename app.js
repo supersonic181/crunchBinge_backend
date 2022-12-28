@@ -1,12 +1,19 @@
-// const cors = require("cors");
+const cors = require("cors");
 const express = require("express");
 const app = express();
 const appService = require("./appService");
 const cookieParser = require("cookie-parser");
 
-// app.use(cors());
-app.use(cookieParser());
+
+const corsOptions = {
+    origin: true, //included origin as true
+    credentials: true, //included credentials as true
+};
+
+app.use(cors(corsOptions));
+
 appService.connectToDB();
+app.use(cookieParser());
 appService.setAPIMiddleware(app);
 appService.apiSetUp(app);
 

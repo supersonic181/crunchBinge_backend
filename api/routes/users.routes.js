@@ -6,7 +6,7 @@ const controller = require("../controller/users.controller");
 
 // Public Routes
 console.log("reaching");
-router.get("/health", (req, res) => { res.status(200).send("Up and Running") });
+router.get("/health", (req, res) => { return res.status(200).send("Up and Running") });
 router.post("/register", controller.userRegistration);
 router.post("/login", controller.userLogin);
 router.get("/getUser", controller.getUsers);

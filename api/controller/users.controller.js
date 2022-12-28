@@ -63,7 +63,8 @@ const userLogin = async (req, res) => {
                     // Generate JWT Token
                     const token = jwt.sign({ userID: user._id }, jwt_secret_key, { expiresIn: "10d" });
                     res.cookie("jwt", token, {
-                        httpOnly: false,
+                        httpOnly: true,
+                        secure: true,
                         maxAge: 24 * 60 * 60 * 1000
                     });
                     const { password, ...info } = user._doc;
@@ -90,7 +91,6 @@ const userLogin = async (req, res) => {
 const verifyUser = async (req, res) => {
     try {
         const email = req.body;
-        console.log(email);
         const user = await userModel.findOne({ email: email.email });
         if (user === null) {
             res.status(400).send({ "message": "User doesn't exist" });
@@ -171,8 +171,8 @@ const getUsers = async (req, res) => {
     try {
         const cookie = req.cookies["jwt"];
         const claims = jwt.verify(cookie, jwt_secret_key)
-
         if (!claims) {
+            console.log("claims issue")
             return res.status(401).send({
                 message: "Unauthenticated"
             })
@@ -182,9 +182,11 @@ const getUsers = async (req, res) => {
         const { password, ...data } = await user.toJSON()
         res.send(data);
     } catch (error) {
-        return res.status(401).send({
-            message: "Unauthenticated"
-        })
+        // console.log("erro here");
+        console.log(error);
+        // return res.status(401).send({
+        //     message: "Unauthenticated"
+        // })
     }
 }
 

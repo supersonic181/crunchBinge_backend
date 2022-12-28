@@ -13,6 +13,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 appService.connectToDB();
+
 app.use(cookieParser());
 appService.setAPIMiddleware(app);
 appService.apiSetUp(app);

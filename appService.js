@@ -18,10 +18,7 @@ const setAPIMiddleware = (app) => {
 
 const apiSetUp = (app) => {
     app.use('/api', api);
-    app.get('/', (req, res) => {
-        res.send("Hello World");
-    })
-    app.get("/health", (req, res) => { return res.status(200).send("Up and Running") });
+    
 }
 
 // exporting the modules
